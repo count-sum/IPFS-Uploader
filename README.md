@@ -13,7 +13,6 @@ The User (user of the IPFS service)
 
 
 Installation:
-
 	Prerequisites: 
 
 1. node / npm and/or yarn
