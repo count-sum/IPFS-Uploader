@@ -11,7 +11,16 @@ The User (user of the IPFS service)
 	The User will submit a file for upload , and will be able to check the files that have been previously uploaded on Ethereum.
 
 
-How to Install:
+
+Installation:
+
+	Prerequisites: 
+
+1. node / npm and/or yarn
+2. Ethereum Browser (metamask or coinbase wallet)
+3. Static hosting
+4. truffle, ganache-cli 
+ 
 
 -Install Truffle and Ganache CLI globally. If you prefer, the graphical version of Ganache works as well!
 npm install -g truffle
