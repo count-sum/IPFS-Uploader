@@ -1,5 +1,5 @@
 # IPFS-Uploader
-Final Project 
+Final Project for Ethereum Developer Program by Andrei Alexandru
 
 Description:
 
