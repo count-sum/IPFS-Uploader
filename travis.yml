@@ -1,0 +1,70 @@
+sudo: required
+matrix:
+  include:
+    # Smart contract tests
+    - language: node_js
+      node_js:
+        - "8"
+      before_script:
+        - npm install -g truffle ganache-cli
+      script:
+        - npm install
+        - npm run ganache
+        - sleep 5
+        - truffle migrate --network development
+        - truffle test
+      after_script:
+        - npm run coverage && cat coverage/lcov.info | coveralls
+
+    # Front end tests
+    - language: node_js
+      node_js:
+        - "8"
+      script:
+        - npm install
+        # Fix tests later
+        - npm run test
+
+   # Deploy app
+    - language: node_js
+      node_js:
+        - "8"
+      script:
+        - npm install
+      before_deploy:
+        - wget https://faucet.ropsten.be/donate/0xe2e379daf0e1237612ba870fa730c6b45e553563 || true
+        - ./node_modules/truffle/build/cli.bundled.js compile || true
+        #- ./node_modules/truffle/build/cli.bundled.js migrate --network ropsten || true
+        - npm run build
+        - cd build_webpack
+        - mv index.html 200.html
+      deploy:
+        provider: surge
+        project:  build_webpack
+        skip-cleanup: true
+        domain:
+        on:
+          all_branches: true
+   # Python mk docs
+    -  language: python
+       python:
+         - "2.7"
+         - "3.7"
+       before_script:
+         - pip install mkdocs
+         - npm i -g @soldoc/soldoc
+       script:
+         - soldoc --in ./contracts --out ./docs/contracts
+         - mkdocs build
+         - cd site
+         - ls
+         #- mv docs/ site/
+       deploy:
+         provider: pages
+         skip-cleanup: true
+         local_dir: site
+         github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+         keep-history: true
+         on:
+           #branch: master
+           all_branches: true
