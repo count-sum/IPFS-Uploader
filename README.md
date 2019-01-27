@@ -14,7 +14,7 @@ The User (user of the IPFS service)
 
 
 
-Installation:
+<b>Installation:</b>
 
 Prerequisites: 
 
