@@ -15,30 +15,38 @@ The User (user of the IPFS service)
 
 
 Installation:
-	Prerequisites: 
+
+Prerequisites: 
 
 1. node / npm and/or yarn
 2. Ethereum Browser (metamask or coinbase wallet)
 3. Static hosting
 4. truffle, ganache-cli 
- 
+-----------------------------------
+Install Truffle and Ganache CLI globally. 
 
--Install Truffle and Ganache CLI globally. If you prefer, the graphical version of Ganache works as well!
-npm install -g truffle
-npm install -g ganache-cli
+	npm install -g truffle
+	npm install -g ganache-cli
 
--Install dependencies:
+Install dependencies:
+	
+	npm install dotenv —save
+	npm install truffle-hdwallet-provider —save
 
-npm install dotenv —save
-npm install truffle-hdwallet-provider —save
-
--run Ganache-Cli with a pre-defined blocktime 
-ganache-cli -b 3
+Initialize Ganache-Cli with a pre-defined blocktime 
+	
+	ganache-cli -b 3 
 
 -Compile and Migrate smart contracts
 
-Truffle Compile
-Truffle Migrate
+	truffle compile
+	truffle migrate
 
--Run the webpack server for front-end hot reloading
-NPM Run Start
+Run the webpack server for front-end hot reloading
+
+	npm run start
+	
+To build the application for production, use the build command. A production build will be in the build_webpack folder.
+
+	npm run build
+
