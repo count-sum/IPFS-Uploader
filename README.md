@@ -1,5 +1,5 @@
 # IPFS-Uploader
-Final Project for Ethereum Developer Program by Andrei Alexandru
+Final Project for Ethereum Developer Program by Andrei A.
 
 Project can be accessed here : http://ipfs-uploader.surge.sh/
 
